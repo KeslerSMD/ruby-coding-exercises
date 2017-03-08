@@ -1,19 +1,20 @@
 require 'rspec'
 
-# <!doctype html>
+<!doctype html>
 
-# <html lang="en">
-# <head>
-#   <meta charset="utf-8">
-# 
-#   <title>Title Goes Here</title>
-# </head>
-# 
-# <body>
-# </body>
-# </html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Title Goes Here</title>
+</head>
+
+<body>
+</body>
+</html>
 
 def html_generator title
+	p "/" + "#{title}" + "/"
 end
 
 describe 'HTML generator' do
@@ -21,3 +22,19 @@ describe 'HTML generator' do
     expect(html_generator 'My Site').to match(/My Site/)
   end
 end
+
+#another way of doing it
+def html_generator title
+<<HTML
+<!doctype html>
+
+<html lang="en">
+	<head>
+  <meta charset="utf-8">
+  <title>'#{ title }'</title> #<<<<<<<<<<<<< string interpolation ## this is called a here doc!
+	</head>
+	<body>
+	</body>
+</html>
+HTML
+	end
